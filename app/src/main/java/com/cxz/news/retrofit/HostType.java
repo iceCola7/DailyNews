@@ -34,9 +34,15 @@ public class HostType {
     public static final int WEATHER_INFO = 3;
 
     /**
+     * 知乎日报的host
+     */
+    @HostTypeChecker
+    public static final int ZHIHU_NEWS_INFO = 4;
+
+    /**
      * 替代枚举的方案，使用IntDef保证类型安全
      */
-    @IntDef({NETEASE_NEWS_VIDEO, SINA_NEWS_PHOTO, WEATHER_INFO})
+    @IntDef({NETEASE_NEWS_VIDEO, SINA_NEWS_PHOTO, WEATHER_INFO,ZHIHU_NEWS_INFO})
     @Retention(RetentionPolicy.SOURCE)
     public @interface HostTypeChecker {
 

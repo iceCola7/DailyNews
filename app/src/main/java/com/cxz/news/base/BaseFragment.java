@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cxz.news.App;
+import com.cxz.news.R;
 import com.cxz.news.module.main.MainContract;
 
 import butterknife.ButterKnife;
@@ -61,6 +64,8 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         if (mRootView == null){
             mRootView = inflater.inflate(attachLayoutRes(),null);
             ButterKnife.bind(this,mRootView);
+            mPresenter = createPresenter();
+            mPresenter.attachView(this);
             initViews();
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
@@ -134,6 +139,10 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
      */
     protected void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, String title) {
         ((BaseActivity)getActivity()).initToolBar(toolbar, homeAsUpEnabled, title);
+    }
+
+    protected void initDrawerToggle(DrawerLayout drawerLayout, Toolbar toolbar){
+        ((BaseActivity)getActivity()).initDrawerToggle(drawerLayout,toolbar);
     }
 
 }

@@ -5,10 +5,14 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.cxz.news.App;
+import com.cxz.news.R;
 
 import butterknife.ButterKnife;
 
@@ -106,6 +110,36 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
 
     protected void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, int resTitle) {
         initToolBar(toolbar, homeAsUpEnabled, getString(resTitle));
+    }
+
+    /**
+     *
+     * @param drawerLayout
+     * @param toolbar
+     */
+    protected void initDrawerToggle(DrawerLayout drawerLayout, Toolbar toolbar){
+        final ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                supportInvalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                supportInvalidateOptionsMenu();
+            }
+        };
+
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
+        drawerLayout.addDrawerListener(mDrawerToggle);
     }
 
     /**

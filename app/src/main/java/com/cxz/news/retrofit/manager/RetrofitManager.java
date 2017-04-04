@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import com.cxz.news.App;
 import com.cxz.news.base.BaseSchedulerTransformer;
 import com.cxz.news.bean.WeatherInfo;
+import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.retrofit.Api;
 import com.cxz.news.retrofit.ApiStores;
 import com.cxz.news.retrofit.HostType;
@@ -166,6 +167,14 @@ public class RetrofitManager {
      */
     public Observable<WeatherInfo> getWeatherInfoObservable(String city) {
         return mApiStores.getWeatherInfo(city).compose(new BaseSchedulerTransformer<WeatherInfo>());
+    }
+
+    /**
+     * 最新的新闻
+     * @return
+     */
+    public Observable<DailyStories> getLatestDailyStories(){
+        return mApiStores.getLatestDailyStories().compose(new BaseSchedulerTransformer<DailyStories>());
     }
 
 }
