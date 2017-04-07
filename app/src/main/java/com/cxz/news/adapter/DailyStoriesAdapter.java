@@ -141,6 +141,10 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return mItems.get(position).getType();
     }
 
+    public Item getItem(int position) {
+        return mItems.get(position);
+    }
+
     public String getTitleBeforePosition(int position) {
         mTmpItems.clear();
         mTmpItems.addAll(mItems.subList(0, position + 1));

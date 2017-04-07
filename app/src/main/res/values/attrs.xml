@@ -26,6 +26,7 @@
         <attr name="android_background" format="reference" />
     </declare-styleable>
 
+    <attr name="toolbar_background" format="color"/>
     <attr name="navdrawer_background" format="color"/>
     <attr name="navdrawer_text_color" format="color"/>
     <attr name="item_date_text_color" format="color"/>

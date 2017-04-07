@@ -177,4 +177,13 @@ public class RetrofitManager {
         return mApiStores.getLatestDailyStories().compose(new BaseSchedulerTransformer<DailyStories>());
     }
 
+    /**
+     * 过去的新闻
+     * @param date
+     * @return
+     */
+    public Observable<DailyStories> getBeforeDailyStories(String date){
+        return mApiStores.getBeforeDailyStories(date).compose(new BaseSchedulerTransformer<DailyStories>());
+    }
+
 }

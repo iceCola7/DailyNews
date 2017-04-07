@@ -4,5 +4,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="today_title">今日热闻</string>
+    <string name="news_today_title">今日热闻</string>
+    <string name="news_home">首页</string>
 </resources>

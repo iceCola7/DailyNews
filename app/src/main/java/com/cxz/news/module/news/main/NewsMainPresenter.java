@@ -1,4 +1,4 @@
-package com.cxz.news.module.news;
+package com.cxz.news.module.news.main;
 
 import com.cxz.news.base.BaseSubscriber;
 import com.cxz.news.bean.news.DailyStories;
@@ -61,6 +61,35 @@ public class NewsMainPresenter implements NewsMainContract.IPresenter {
         mCompositeSubscription.add(subscriber);
         RetrofitManager.getInstance(HostType.ZHIHU_NEWS_INFO)
                 .getLatestDailyStories()
+                .subscribe(subscriber);
+    }
+
+    @Override
+    public void loadBeforeDailyStories(String date) {
+        Subscriber subscriber = new BaseSubscriber<DailyStories>(new RequestCallback<DailyStories>() {
+            @Override
+            public void beforeRequest() {
+
+            }
+
+            @Override
+            public void requestError(String msg) {
+
+            }
+
+            @Override
+            public void requestComplete() {
+
+            }
+
+            @Override
+            public void requestSuccess(DailyStories data) {
+                mViews.updateBeforeDailyStories(data);
+            }
+        });
+        mCompositeSubscription.add(subscriber);
+        RetrofitManager.getInstance(HostType.ZHIHU_NEWS_INFO)
+                .getBeforeDailyStories(date)
                 .subscribe(subscriber);
     }
 }
