@@ -22,7 +22,7 @@
         <item name="toolbar_background">@color/toolbar_background</item>
         <item name="navdrawer_background">@color/navdrawer_background</item>
         <item name="navdrawer_text_color">@color/navdrawer_text_color</item>
-        <item name="item_date_text_color">@color/colorPrimary</item>
+        <item name="item_date_text_color">@color/item_date_text_color</item>
         <item name="item_story_text_color">@color/item_story_text_color</item>
         <item name="item_story_background_color">@color/card_background_color</item>
         <item name="android:windowBackground">@color/style_window_background</item>

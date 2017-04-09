@@ -11,6 +11,10 @@ public class NewsDetailContract {
 
     interface IView extends IBaseView{
         void updateStoryDetail(Story story);
+        void showResult(String result);
+        void showResultWithoutBody(String url);
+        void showTitle(String title);
+        void showCover(String imageUrl);
     }
 
     interface IPresenter extends IBasePresenter<IView>{
