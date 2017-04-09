@@ -5,16 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:fitsSystemWindows">false</item>
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:fitsSystemWindows">true</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">true</item>
 
-        <!--正常状态下字体颜色和icon颜色-->
-        <item name="android:textColorPrimary">@color/color888888</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -22,10 +17,12 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="DayTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="toolbar_background">@color/toolbar_background</item>
         <item name="navdrawer_background">@color/navdrawer_background</item>
         <item name="navdrawer_text_color">@color/navdrawer_text_color</item>
-        <item name="item_date_text_color">@color/item_date_text_color</item>
+        <item name="item_date_text_color">@color/colorPrimary</item>
         <item name="item_story_text_color">@color/item_story_text_color</item>
         <item name="item_story_background_color">@color/card_background_color</item>
         <item name="android:windowBackground">@color/style_window_background</item>
@@ -35,6 +32,8 @@
     </style>
 
     <style name="NightTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/color252525</item>
         <item name="toolbar_background">@color/color252525</item>
         <item name="navdrawer_background">@color/color252525</item>
         <item name="navdrawer_text_color">@color/color999999</item>

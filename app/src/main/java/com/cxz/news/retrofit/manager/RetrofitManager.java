@@ -6,6 +6,7 @@ import com.cxz.news.App;
 import com.cxz.news.base.BaseSchedulerTransformer;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
+import com.cxz.news.bean.news.Story;
 import com.cxz.news.retrofit.Api;
 import com.cxz.news.retrofit.ApiStores;
 import com.cxz.news.retrofit.HostType;
@@ -184,6 +185,15 @@ public class RetrofitManager {
      */
     public Observable<DailyStories> getBeforeDailyStories(String date){
         return mApiStores.getBeforeDailyStories(date).compose(new BaseSchedulerTransformer<DailyStories>());
+    }
+
+    /**
+     * 根据ID获取新闻详情
+     * @param storyId
+     * @return
+     */
+    public Observable<Story> getStoryDetailById(String storyId){
+        return mApiStores.getStoryDetailById(storyId).compose(new BaseSchedulerTransformer<Story>());
     }
 
 }

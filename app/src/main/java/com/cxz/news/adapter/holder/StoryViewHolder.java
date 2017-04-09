@@ -1,6 +1,7 @@
 package com.cxz.news.adapter.holder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -9,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cxz.news.Constant;
 import com.cxz.news.R;
 import com.cxz.news.bean.news.Story;
+import com.cxz.news.module.news.detail.NewsDetailActivity;
 
 /**
  * Created by chenxz on 2017/4/5.
@@ -37,7 +40,9 @@ public class StoryViewHolder extends RecyclerView.ViewHolder implements View.OnC
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.card) {
-            //IntentUtils.intentToStoryActivity((Activity) v.getContext(), mStory);
+            Intent intent = new Intent(mContext, NewsDetailActivity.class);
+            intent.putExtra(Constant.NEWS_EXTRA_ID,String.valueOf(mStory.getId()));
+            mContext.startActivity(intent);
         }
     }
 

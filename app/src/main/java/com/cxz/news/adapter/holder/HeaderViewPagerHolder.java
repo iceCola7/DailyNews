@@ -1,15 +1,15 @@
 package com.cxz.news.adapter.holder;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.cxz.news.R;
 import com.cxz.news.bean.news.Story;
+import com.cxz.news.module.news.detail.NewsDetailActivity;
+import com.cxz.news.Constant;
 import com.cxz.news.widget.CirclePageIndicator;
 import com.cxz.news.widget.MyViewPager;
 import com.cxz.news.widget.StoryHeaderView;
@@ -92,7 +92,9 @@ public class HeaderViewPagerHolder extends RecyclerView.ViewHolder {
             storyHeaderView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //IntentUtils.intentToStoryActivity((Activity) v.getContext(), story);
+                    Intent intent = new Intent(v.getContext(), NewsDetailActivity.class);
+                    intent.putExtra(Constant.NEWS_EXTRA_ID,String.valueOf(story.getId()));
+                    v.getContext().startActivity(intent);
                 }
             });
             container.addView(storyHeaderView);
