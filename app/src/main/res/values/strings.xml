@@ -6,4 +6,14 @@
 
     <string name="news_today_title">今日热闻</string>
     <string name="news_home">首页</string>
+    
+    <string name="action_night_mode">夜间模式</string>
+    <string name="action_day_mode">日间模式</string>
+
+    <string name="action_copy_link">复制链接</string>
+    <string name="action_open_in_browser">在浏览器中打开</string>
+    <string name="action_copy_text">复制文本</string>
+    <string name="action_share">分享</string>
+
+
 </resources>

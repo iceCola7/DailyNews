@@ -1,16 +1,24 @@
 package com.cxz.news.module.news.detail;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.text.TextUtils;
 
 import com.cxz.news.base.BaseSubscriber;
 import com.cxz.news.bean.news.Story;
 import com.cxz.news.callback.RequestCallback;
 import com.cxz.news.retrofit.HostType;
 import com.cxz.news.retrofit.manager.RetrofitManager;
+import com.cxz.news.utils.XLog;
 
 import rx.Subscriber;
 import rx.subscriptions.CompositeSubscription;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * Created by chenxz on 2017/4/7.
@@ -19,6 +27,7 @@ public class NewsDetailPresenter implements NewsDetailContract.IPresenter {
     protected NewsDetailContract.IView mView;
 
     private CompositeSubscription mCompositeSubscription;
+    private Story mStory;
 
     private Context mContext;
     public NewsDetailPresenter(Context context){
@@ -64,14 +73,77 @@ public class NewsDetailPresenter implements NewsDetailContract.IPresenter {
             @Override
             public void requestSuccess(Story data) {
                 //mView.updateStoryDetail(data);
-                mView.showTitle(data.getTitle());
-                mView.showCover(data.getImage());
-                mView.showResult(convertNewsContent(data.getBody()));
+                mStory = data;
+                if (!TextUtils.isEmpty(data.getTitle())){
+                    mView.showTitle(data.getTitle());
+                    mView.showImageSource(data.getImageSource());
+                }
+                if (!TextUtils.isEmpty(data.getImage())){
+                    mView.showCover(data.getImage());
+                }
+                if (!TextUtils.isEmpty(data.getBody())){
+                    mView.showResult(convertNewsContent(data.getBody()));
+                }else {
+                    mView.showResultWithoutBody(data.getShareUrl());
+                }
+
             }
         });
         RetrofitManager.getInstance(HostType.ZHIHU_NEWS_INFO)
                 .getStoryDetailById(storyId)
                 .subscribe(subscriber);
+    }
+
+    @Override
+    public void copyLink() {
+        if (checkNull()){
+            return;
+        }
+        ClipboardManager manager = (ClipboardManager) mContext.getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("text",mStory.getShareUrl());
+        manager.setPrimaryClip(clipData);
+        mView.showCopySuccess();
+    }
+
+    @Override
+    public void copyText() {
+        if (checkNull()){
+            return;
+        }
+        ClipboardManager manager = (ClipboardManager) mContext.getSystemService(CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("text",mStory.getTitle());
+        manager.setPrimaryClip(clipData);
+        mView.showCopySuccess();
+    }
+
+    @Override
+    public void openInBrowser() {
+        if (checkNull()){
+            return;
+        }
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(mStory.getShareUrl()));
+            mContext.startActivity(intent);
+        }catch (android.content.ActivityNotFoundException e){
+            mView.showBrowserNotFoundError();
+        }
+    }
+
+    @Override
+    public void shareAsText() {
+        if (checkNull()){
+            return;
+        }
+        try {
+            Intent shareIntent = new Intent().setAction(Intent.ACTION_SEND).setType("text/plain");
+            String shareText = mStory.getTitle()+" ";
+            shareText += mStory.getShareUrl();
+            shareIntent.putExtra(Intent.EXTRA_TEXT,shareText);
+            mContext.startActivity(Intent.createChooser(shareIntent,"分享至"));
+
+        } catch (android.content.ActivityNotFoundException ex){
+        }
     }
 
     private String convertNewsContent(String result){
@@ -107,4 +179,8 @@ public class NewsDetailPresenter implements NewsDetailContract.IPresenter {
                 .append("</body></html>").toString();
     }
 
+
+    private boolean checkNull(){
+        return mStory == null;
+    }
 }

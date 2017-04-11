@@ -4,17 +4,21 @@ import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cxz.news.Constant;
 import com.cxz.news.R;
 import com.cxz.news.base.BaseActivity;
 import com.cxz.news.bean.news.Story;
+import com.cxz.news.utils.XLog;
 
 import butterknife.BindView;
 
@@ -30,6 +34,8 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.IPresent
     NestedScrollView mNestedScrollView;
     @BindView(R.id.web_view)
     WebView mWebView;
+    @BindView(R.id.tv_image_source)
+    TextView tv_image_source;
 
     private String mNewsId;
 
@@ -86,17 +92,31 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.IPresent
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_news_detail,menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home){
             onBackPressed();
             return true;
+        }else if (id == R.id.action_copy_link){
+            mPresenter.copyLink();
+            return true;
+        }else if (id == R.id.action_copy_text){
+            mPresenter.copyText();
+            return true;
+        }else if (id == R.id.action_open_in_browser){
+            mPresenter.openInBrowser();
+            return true;
+        }else if (id == R.id.action_share){
+            mPresenter.shareAsText();
+            return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void updateStoryDetail(Story story) {
     }
 
     @Override
@@ -106,7 +126,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.IPresent
 
     @Override
     public void showResultWithoutBody(String url) {
-
+        mWebView.loadUrl(url);
     }
 
     @Override
@@ -115,7 +135,22 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.IPresent
     }
 
     @Override
+    public void showImageSource(String source) {
+        tv_image_source.setText(source);
+    }
+
+    @Override
     public void showCover(String imageUrl) {
         Glide.with(this).load(imageUrl).centerCrop().into(iv_header);
+    }
+
+    @Override
+    public void showCopySuccess() {
+        Toast.makeText(this,"复制成功",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showBrowserNotFoundError() {
+        Toast.makeText(this,"未找到浏览器",Toast.LENGTH_LONG).show();
     }
 }
