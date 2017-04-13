@@ -9,15 +9,19 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.cxz.news.Constants;
 import com.cxz.news.R;
 import com.cxz.news.base.BaseActivity;
 import com.cxz.news.module.news.main.NewsMainFragment;
+import com.cxz.news.module.photo.main.PhotosMainFragment;
+import com.cxz.news.utils.SPUtils;
 
 import butterknife.BindView;
 
@@ -44,6 +48,7 @@ public class MainActivity extends BaseActivity<MainContract.IPresenter> implemen
                     replaceFragment(R.id.fl_container,new NewsMainFragment(),mSparseTags.get(R.id.nav_news));
                     break;
                 case R.id.nav_photos:
+                    replaceFragment(R.id.fl_container,new PhotosMainFragment(),mSparseTags.get(R.id.nav_photos));
                     break;
                 case R.id.nav_videos:
                    break;
@@ -142,6 +147,35 @@ public class MainActivity extends BaseActivity<MainContract.IPresenter> implemen
         } else {
             finish();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_day_night_mode){
+            //TODO 未完成
+            toggleThemeSetting();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 日间模式、夜间模式切换
+     */
+    private void toggleThemeSetting(){
+        Boolean isNightMode = (Boolean) SPUtils.get(this, Constants.SHARED_PREF_IS_NIGHE_MODE,false);
+        if (isNightMode){
+            setTheme(R.style.NightTheme);
+        }else {
+            setTheme(R.style.DayTheme);
+        }
+        SPUtils.put(this,Constants.SHARED_PREF_IS_NIGHE_MODE,!isNightMode);
     }
 
 }

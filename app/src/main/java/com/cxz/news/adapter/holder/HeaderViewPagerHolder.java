@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cxz.news.Constants;
 import com.cxz.news.R;
 import com.cxz.news.bean.news.Story;
 import com.cxz.news.module.news.detail.NewsDetailActivity;
-import com.cxz.news.Constant;
 import com.cxz.news.widget.CirclePageIndicator;
 import com.cxz.news.widget.MyViewPager;
 import com.cxz.news.widget.StoryHeaderView;
@@ -93,7 +93,7 @@ public class HeaderViewPagerHolder extends RecyclerView.ViewHolder {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), NewsDetailActivity.class);
-                    intent.putExtra(Constant.NEWS_EXTRA_ID,String.valueOf(story.getId()));
+                    intent.putExtra(Constants.NEWS_EXTRA_ID,String.valueOf(story.getId()));
                     v.getContext().startActivity(intent);
                 }
             });

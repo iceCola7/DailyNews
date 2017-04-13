@@ -14,11 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.cxz.news.Constant;
+import com.cxz.news.Constants;
 import com.cxz.news.R;
 import com.cxz.news.base.BaseActivity;
-import com.cxz.news.bean.news.Story;
-import com.cxz.news.utils.XLog;
 
 import butterknife.BindView;
 
@@ -55,7 +53,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailContract.IPresent
         initCollapsingToolbarLayout();
         initWebView();
 
-        mNewsId = getIntent().getStringExtra(Constant.NEWS_EXTRA_ID);
+        mNewsId = getIntent().getStringExtra(Constants.NEWS_EXTRA_ID);
         mPresenter.loadStoryDetailById(mNewsId);
     }
 

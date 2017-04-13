@@ -18,7 +18,7 @@ import butterknife.BindView;
  */
 public class NewsMainFragment extends BaseFragment<NewsMainContract.IPresenter> implements NewsMainContract.IView{
 
-    @BindView(R.id.recycler_view)
+    @BindView(R.id.pull_load_recyclerView)
     PullLoadMoreRecyclerView mRecyclerView;
 
     DailyStoriesAdapter mAdapter;

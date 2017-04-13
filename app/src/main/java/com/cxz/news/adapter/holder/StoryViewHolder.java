@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cxz.news.Constant;
+import com.cxz.news.Constants;
 import com.cxz.news.R;
 import com.cxz.news.bean.news.Story;
 import com.cxz.news.module.news.detail.NewsDetailActivity;
@@ -41,7 +41,7 @@ public class StoryViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public void onClick(View v) {
         if (v.getId() == R.id.card) {
             Intent intent = new Intent(mContext, NewsDetailActivity.class);
-            intent.putExtra(Constant.NEWS_EXTRA_ID,String.valueOf(mStory.getId()));
+            intent.putExtra(Constants.NEWS_EXTRA_ID,String.valueOf(mStory.getId()));
             mContext.startActivity(intent);
         }
     }
