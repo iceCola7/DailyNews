@@ -4,6 +4,11 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="news">新闻</string>
+    <string name="photos">图片</string>
+    <string name="videos">视频</string>
+    <string name="setting">设置</string>
+
     <string name="news_today_title">今日热闻</string>
     <string name="news_home">首页</string>
     
@@ -14,6 +19,8 @@
     <string name="action_open_in_browser">在浏览器中打开</string>
     <string name="action_copy_text">复制文本</string>
     <string name="action_share">分享</string>
+
+    <string name="photo_life">生活</string>
 
 
 </resources>

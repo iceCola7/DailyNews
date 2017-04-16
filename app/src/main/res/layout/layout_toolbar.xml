@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/toolbar_background">
-
-    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:layout_marginTop="@dimen/toolbar_margin_top"
-        app:theme="@style/AppTheme.AppBarOverlay" />
-</FrameLayout>
+    android:layout_height="@dimen/toolbar_height"
+    android:layout_marginTop="@dimen/toolbar_margin_top"
+    android:background="?attr/toolbar_background"
+    app:layout_collapseMode="pin"
+    app:theme="@style/AppTheme.AppBarOverlay" />
