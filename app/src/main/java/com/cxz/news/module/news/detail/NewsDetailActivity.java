@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.cxz.news.Constants;
+import com.cxz.news.common.Constants;
 import com.cxz.news.R;
 import com.cxz.news.base.BaseActivity;
 

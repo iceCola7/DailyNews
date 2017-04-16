@@ -1,4 +1,4 @@
-package com.cxz.news.adapter.holder;
+package com.cxz.news.adapter.news.holder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

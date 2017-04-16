@@ -1,4 +1,4 @@
-package com.cxz.news;
+package com.cxz.news.common;
 
 /**
  * Created by chenxz on 2017/4/9.

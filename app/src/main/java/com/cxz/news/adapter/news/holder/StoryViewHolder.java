@@ -1,4 +1,4 @@
-package com.cxz.news.adapter.holder;
+package com.cxz.news.adapter.news.holder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.cxz.news.Constants;
+import com.cxz.news.common.Constants;
 import com.cxz.news.R;
 import com.cxz.news.bean.news.Story;
 import com.cxz.news.module.news.detail.NewsDetailActivity;

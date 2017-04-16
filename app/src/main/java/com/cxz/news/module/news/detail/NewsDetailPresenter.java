@@ -62,7 +62,7 @@ public class NewsDetailPresenter implements NewsDetailContract.IPresenter {
 
             @Override
             public void requestError(String msg) {
-
+                XLog.e(msg);
             }
 
             @Override

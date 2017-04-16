@@ -16,7 +16,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.cxz.news.Constants;
+import com.cxz.news.common.Constants;
 import com.cxz.news.R;
 import com.cxz.news.base.BaseActivity;
 import com.cxz.news.module.news.main.NewsMainFragment;
@@ -33,8 +33,12 @@ public class MainActivity extends BaseActivity<MainContract.IPresenter> implemen
     NavigationView mNaView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar mToolbar;
+
+    public DrawerLayout getDrawerLayout() {
+        return mDrawerLayout;
+    }
 
     private int mItemId = -1;
     private long mExitTime = 0;
@@ -77,8 +81,6 @@ public class MainActivity extends BaseActivity<MainContract.IPresenter> implemen
         mSparseTags.put(R.id.nav_news,"News");
         mSparseTags.put(R.id.nav_photos,"Photos");
         mSparseTags.put(R.id.nav_videos,"Videos");
-        initToolBar(mToolbar,false,"News");
-        initDrawerToggle(mDrawerLayout,mToolbar);
     }
 
     @Override
@@ -151,7 +153,7 @@ public class MainActivity extends BaseActivity<MainContract.IPresenter> implemen
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        //getMenuInflater().inflate(R.menu.menu_main,menu);
         return true;
     }
 

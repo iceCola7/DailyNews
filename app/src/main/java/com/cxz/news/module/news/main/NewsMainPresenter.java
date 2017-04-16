@@ -5,6 +5,7 @@ import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.callback.RequestCallback;
 import com.cxz.news.retrofit.HostType;
 import com.cxz.news.retrofit.manager.RetrofitManager;
+import com.cxz.news.utils.XLog;
 
 import rx.Subscriber;
 import rx.subscriptions.CompositeSubscription;
@@ -45,7 +46,7 @@ public class NewsMainPresenter implements NewsMainContract.IPresenter {
 
             @Override
             public void requestError(String msg) {
-
+                XLog.e(msg);
             }
 
             @Override

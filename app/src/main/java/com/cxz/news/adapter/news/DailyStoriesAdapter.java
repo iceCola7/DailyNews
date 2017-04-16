@@ -1,4 +1,4 @@
-package com.cxz.news.adapter;
+package com.cxz.news.adapter.news;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cxz.news.R;
-import com.cxz.news.adapter.holder.DateViewHolder;
-import com.cxz.news.adapter.holder.HeaderViewPagerHolder;
-import com.cxz.news.adapter.holder.StoryViewHolder;
+import com.cxz.news.adapter.news.holder.DateViewHolder;
+import com.cxz.news.adapter.news.holder.HeaderViewPagerHolder;
+import com.cxz.news.adapter.news.holder.StoryViewHolder;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
 
@@ -25,6 +25,7 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private final List<Item> mItems;
     private final List<Item> mTmpItems;
     private LayoutInflater mInflater;
+    private HeaderViewPagerHolder mViewPagerHolder;
 
     public static class Type {
         public static final int TYPE_HEADER = 0;
@@ -120,7 +121,8 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         Item item = mItems.get(position);
         switch (viewType) {
             case Type.TYPE_HEADER:
-                ((HeaderViewPagerHolder) holder).bindHeaderView();
+                mViewPagerHolder = ((HeaderViewPagerHolder) holder);
+                mViewPagerHolder.bindHeaderView();
                 break;
             case Type.TYPE_DATE:
                 ((DateViewHolder) holder).bindDate(item.getDate());
@@ -194,6 +196,10 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public void setStories(List<Story> stories) {
             this.stories = stories;
         }
+    }
+
+    public void stopAutoScroll(){
+        mViewPagerHolder.stopAutoScroll();
     }
 
 }

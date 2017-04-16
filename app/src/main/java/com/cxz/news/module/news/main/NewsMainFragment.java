@@ -2,13 +2,15 @@ package com.cxz.news.module.news.main;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.cxz.news.R;
-import com.cxz.news.adapter.DailyStoriesAdapter;
-import com.cxz.news.adapter.holder.DateViewHolder;
+import com.cxz.news.adapter.news.DailyStoriesAdapter;
+import com.cxz.news.adapter.news.holder.DateViewHolder;
 import com.cxz.news.base.BaseActivity;
 import com.cxz.news.base.BaseFragment;
 import com.cxz.news.bean.news.DailyStories;
+import com.cxz.news.module.main.MainActivity;
 import com.cxz.recyclerview.PullLoadMoreRecyclerView;
 
 import butterknife.BindView;
@@ -20,6 +22,8 @@ public class NewsMainFragment extends BaseFragment<NewsMainContract.IPresenter> 
 
     @BindView(R.id.pull_load_recyclerView)
     PullLoadMoreRecyclerView mRecyclerView;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     DailyStoriesAdapter mAdapter;
     private String mDate;
@@ -37,6 +41,9 @@ public class NewsMainFragment extends BaseFragment<NewsMainContract.IPresenter> 
 
     @Override
     protected void initViews() {
+        initToolBar(mToolbar,false,"News");
+        initDrawerToggle(((MainActivity)mContext).getDrawerLayout(),mToolbar);
+
         mAdapter = new DailyStoriesAdapter(getActivity());
         mRecyclerView.setRefreshing(false);
         mRecyclerView.setLinearLayout();
@@ -120,4 +127,9 @@ public class NewsMainFragment extends BaseFragment<NewsMainContract.IPresenter> 
         lastTitLePos = position;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //mAdapter.stopAutoScroll();
+    }
 }

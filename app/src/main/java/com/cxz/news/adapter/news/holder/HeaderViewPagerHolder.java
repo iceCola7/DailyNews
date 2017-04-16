@@ -1,4 +1,4 @@
-package com.cxz.news.adapter.holder;
+package com.cxz.news.adapter.news.holder;
 
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cxz.news.Constants;
+import com.cxz.news.common.Constants;
 import com.cxz.news.R;
 import com.cxz.news.bean.news.Story;
 import com.cxz.news.module.news.detail.NewsDetailActivity;
