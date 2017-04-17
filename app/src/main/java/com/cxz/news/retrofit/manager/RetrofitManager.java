@@ -4,6 +4,7 @@ import android.util.SparseArray;
 
 import com.cxz.news.App;
 import com.cxz.news.base.BaseSchedulerTransformer;
+import com.cxz.news.bean.Photos.GankPhotos;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
@@ -194,6 +195,15 @@ public class RetrofitManager {
      */
     public Observable<Story> getStoryDetailById(String storyId){
         return mApiStores.getStoryDetailById(storyId).compose(new BaseSchedulerTransformer<Story>());
+    }
+
+    /**
+     * 获取干货图片
+     * @param pageSize
+     * @return
+     */
+    public Observable<GankPhotos> getGankPhotos(int pageSize){
+        return mApiStores.getGankPhotos(pageSize).compose(new BaseSchedulerTransformer<GankPhotos>());
     }
 
 }

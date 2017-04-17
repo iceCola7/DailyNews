@@ -24,7 +24,6 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private final List<Item> mItems;
     private final List<Item> mTmpItems;
-    private LayoutInflater mInflater;
     private HeaderViewPagerHolder mViewPagerHolder;
 
     public static class Type {
@@ -33,10 +32,9 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public static final int TYPE_STORY = 2;
     }
 
-    public DailyStoriesAdapter(Context context) {
+    public DailyStoriesAdapter() {
         mItems = new ArrayList<>();
         mTmpItems = new ArrayList<>();
-        mInflater = LayoutInflater.from(context);
     }
 
     public void setList(DailyStories dailyStories) {
@@ -102,13 +100,13 @@ public class DailyStoriesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         View itemView;
         switch (viewType) {
             case Type.TYPE_HEADER:
-                itemView = mInflater.inflate(R.layout.news_recycler_header_viewpager, null);
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_recycler_header_viewpager, null);
                 return new HeaderViewPagerHolder(itemView, mItems.get(0).getStories());
             case Type.TYPE_DATE:
-                itemView = mInflater.inflate(R.layout.news_recycler_item_date, null);
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_recycler_item_date, null);
                 return new DateViewHolder(itemView);
             case Type.TYPE_STORY:
-                itemView = mInflater.inflate(R.layout.news_recycler_item_story, null);
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_recycler_item_story, null);
                 return new StoryViewHolder(itemView);
             default:
                 return null;

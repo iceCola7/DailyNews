@@ -1,5 +1,6 @@
 package com.cxz.news.retrofit;
 
+import com.cxz.news.bean.Photos.GankPhotos;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
@@ -41,4 +42,13 @@ public interface ApiStores {
      */
     @GET("news/{storyId}")
     Observable<Story> getStoryDetailById(@Path("storyId") String storyId);
+
+    /**
+     * 获取干货图片
+     * @param pageSize
+     * @return
+     */
+    @GET("10/{pageSize}")
+    Observable<GankPhotos> getGankPhotos(@Path("pageSize") int pageSize);
+
 }

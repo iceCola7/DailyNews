@@ -44,12 +44,11 @@ public class NewsMainFragment extends BaseFragment<NewsMainContract.IPresenter> 
         initToolBar(mToolbar,false,"News");
         initDrawerToggle(((MainActivity)mContext).getDrawerLayout(),mToolbar);
 
-        mAdapter = new DailyStoriesAdapter(getActivity());
+        mAdapter = new DailyStoriesAdapter();
         mRecyclerView.setRefreshing(false);
         mRecyclerView.setLinearLayout();
         mRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreListener());
         mLinearLayoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
-        mPresenter.loadLatestDailyStories();
 
         mRecyclerView.getRecyclerView().setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -68,7 +67,7 @@ public class NewsMainFragment extends BaseFragment<NewsMainContract.IPresenter> 
 
     @Override
     protected void updateViews(boolean isRefresh) {
-
+        mPresenter.loadLatestDailyStories();
     }
 
     @Override

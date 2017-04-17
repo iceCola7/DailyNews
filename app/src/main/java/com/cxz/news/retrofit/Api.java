@@ -15,6 +15,11 @@ public class Api {
     public static final String ZHIHU_NEWS_HOST = "http://news.at.zhihu.com/api/4/";
 
     /**
+     * 干货图片
+     */
+    public static final String GANK_PHOTO_HOST = "http://gank.io/api/data/福利/";
+
+    /**
      * 获取对应的host
      *
      * @param hostType host类型
@@ -26,6 +31,8 @@ public class Api {
                 return Api.WEATHER_HOST;
             case HostType.ZHIHU_NEWS_INFO:
                 return Api.ZHIHU_NEWS_HOST;
+            case HostType.GANK_NEWS_PHOTO:
+                return Api.GANK_PHOTO_HOST;
         }
         return "";
     }
