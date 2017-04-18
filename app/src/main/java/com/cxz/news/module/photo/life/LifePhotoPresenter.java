@@ -1,17 +1,18 @@
 package com.cxz.news.module.photo.life;
 
 import com.cxz.news.base.BaseSubscriber;
-import com.cxz.news.bean.Photos.GankPhotos;
+import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.callback.RequestCallback;
 import com.cxz.news.retrofit.HostType;
 import com.cxz.news.retrofit.manager.RetrofitManager;
-import com.cxz.news.utils.XLog;
+
+import java.util.List;
 
 import rx.Subscriber;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Created by chenxz on 2017/4/16.
+ * Created by chenxz on 2017/4/18.
  */
 public class LifePhotoPresenter implements LifePhotoContract.IPresenter {
 
@@ -37,8 +38,8 @@ public class LifePhotoPresenter implements LifePhotoContract.IPresenter {
     }
 
     @Override
-    public void loadGankPhotos(final int pageSize) {
-        Subscriber subscriber = new BaseSubscriber<GankPhotos>(new RequestCallback<GankPhotos>() {
+    public void loadLifePhotos() {
+        Subscriber subscriber = new BaseSubscriber<List<LifePhotoInfo>>(new RequestCallback<List<LifePhotoInfo>>() {
             @Override
             public void beforeRequest() {
 
@@ -55,15 +56,42 @@ public class LifePhotoPresenter implements LifePhotoContract.IPresenter {
             }
 
             @Override
-            public void requestSuccess(GankPhotos data) {
-                if (pageSize == 1)
-                    mView.updateItems(data.getResults());
-                else
-                    mView.updateMoreItems(data.getResults());
+            public void requestSuccess(List<LifePhotoInfo> data) {
+                mView.updateItems(data);
             }
         });
-        RetrofitManager.getInstance(HostType.GANK_NEWS_PHOTO)
-                .getGankPhotos(pageSize)
+        mCompositeSubscription.add(subscriber);
+        RetrofitManager.getInstance(HostType.LIFE_NEWS_PHOTO)
+                .getLifePhotos()
+                .subscribe(subscriber);
+    }
+
+    @Override
+    public void loadMoreLifePhotos(String setId) {
+        Subscriber subscriber = new BaseSubscriber<List<LifePhotoInfo>>(new RequestCallback<List<LifePhotoInfo>>() {
+            @Override
+            public void beforeRequest() {
+
+            }
+
+            @Override
+            public void requestError(String msg) {
+
+            }
+
+            @Override
+            public void requestComplete() {
+
+            }
+
+            @Override
+            public void requestSuccess(List<LifePhotoInfo> data) {
+                mView.updateMoreItems(data);
+            }
+        });
+        mCompositeSubscription.add(subscriber);
+        RetrofitManager.getInstance(HostType.LIFE_NEWS_PHOTO)
+                .getMoreLifePhotos(setId)
                 .subscribe(subscriber);
     }
 }

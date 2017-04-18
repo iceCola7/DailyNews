@@ -6,7 +6,7 @@ import java.util.Date;
  * 干货图片信息
  * Created by chenxz on 2017/4/17.
  */
-public class PhotoInfo {
+public class GankPhotoInfo {
 
     private String Id;
     private Date createdat;

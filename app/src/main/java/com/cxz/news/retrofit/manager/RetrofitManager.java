@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import com.cxz.news.App;
 import com.cxz.news.base.BaseSchedulerTransformer;
 import com.cxz.news.bean.Photos.GankPhotos;
+import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
@@ -17,6 +18,7 @@ import com.cxz.news.utils.XLog;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -204,6 +206,23 @@ public class RetrofitManager {
      */
     public Observable<GankPhotos> getGankPhotos(int pageSize){
         return mApiStores.getGankPhotos(pageSize).compose(new BaseSchedulerTransformer<GankPhotos>());
+    }
+
+    /**
+     * 获取生活图片
+     * @return
+     */
+    public Observable<List<LifePhotoInfo>> getLifePhotos(){
+        return mApiStores.getLifePhotos().compose(new BaseSchedulerTransformer<List<LifePhotoInfo>>());
+    }
+
+    /**
+     * 获取更多生活图片
+     * @param setId
+     * @return
+     */
+    public Observable<List<LifePhotoInfo>> getMoreLifePhotos(String setId){
+        return mApiStores.getMoreLifePhotos(setId).compose(new BaseSchedulerTransformer<List<LifePhotoInfo>>());
     }
 
 }

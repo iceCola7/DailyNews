@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.cxz.news.R;
 import com.cxz.news.adapter.photos.holder.PhotosViewHolder;
-import com.cxz.news.bean.Photos.PhotoInfo;
+import com.cxz.news.bean.Photos.GankPhotoInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.Random;
  */
 public class GankPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<PhotoInfo> mPhotoInfos;
+    private List<GankPhotoInfo> mPhotoInfos;
     private List<Integer> heightLists;//装产出的随机数
 
     public GankPhotosAdapter(){
@@ -26,17 +26,18 @@ public class GankPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         heightLists = new ArrayList<>();
     }
 
-    public void setLists(List<PhotoInfo> photoInfos) {
+    public void setLists(List<GankPhotoInfo> photoInfos) {
         mPhotoInfos.clear();
+        heightLists.clear();
         appendLists(photoInfos);
     }
 
-    public void appendLists(List<PhotoInfo> photoInfos){
-        mPhotoInfos.addAll(photoInfos);
-        for (int i = 0; i < mPhotoInfos.size(); i++) {
-            int height = new Random().nextInt(200) + 100;//[100,300)的随机数
+    public void appendLists(List<GankPhotoInfo> photoInfos){
+        for (int i = 0; i < photoInfos.size(); i++) {
+            int height = new Random().nextInt(300) + 400;
             heightLists.add(height);
         }
+        mPhotoInfos.addAll(photoInfos);
         notifyDataSetChanged();
     }
 
@@ -48,7 +49,7 @@ public class GankPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        PhotoInfo photoInfo = mPhotoInfos.get(position);
+        GankPhotoInfo photoInfo = mPhotoInfos.get(position);
         ((PhotosViewHolder)holder).bindData(photoInfo);
         ViewGroup.LayoutParams params = ((PhotosViewHolder)holder).getImageView().getLayoutParams();
         params.height=heightLists.get(position);

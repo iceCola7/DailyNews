@@ -7,8 +7,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cxz.news.R;
-import com.cxz.news.bean.Photos.PhotoInfo;
-import com.cxz.news.utils.XLog;
+import com.cxz.news.bean.Photos.GankPhotoInfo;
 
 /**
  * Created by chenxz on 2017/4/17.
@@ -24,10 +23,10 @@ public class PhotosViewHolder extends RecyclerView.ViewHolder {
     public PhotosViewHolder(View itemView) {
         super(itemView);
         imageView = (ImageView) itemView.findViewById(R.id.imageView);
-        textView = (TextView) itemView.findViewById(R.id.tv_desc);
+        textView = (TextView) itemView.findViewById(R.id.textView);
     }
 
-    public void bindData(PhotoInfo photoInfo){
+    public void bindData(GankPhotoInfo photoInfo){
         textView.setText(photoInfo.getDesc());
         Glide.with(itemView.getContext()).load(photoInfo.getUrl()).centerCrop().into(imageView);
     }

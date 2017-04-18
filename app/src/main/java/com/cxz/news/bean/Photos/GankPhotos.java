@@ -8,7 +8,7 @@ import java.util.List;
 public class GankPhotos {
 
     private boolean error;
-    private List<PhotoInfo> results;
+    private List<GankPhotoInfo> results;
     public void setError(boolean error) {
         this.error = error;
     }
@@ -16,10 +16,10 @@ public class GankPhotos {
         return error;
     }
 
-    public void setResults(List<PhotoInfo> results) {
+    public void setResults(List<GankPhotoInfo> results) {
         this.results = results;
     }
-    public List<PhotoInfo> getResults() {
+    public List<GankPhotoInfo> getResults() {
         return results;
     }
 }

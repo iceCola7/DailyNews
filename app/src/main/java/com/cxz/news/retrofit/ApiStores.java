@@ -1,9 +1,12 @@
 package com.cxz.news.retrofit;
 
 import com.cxz.news.bean.Photos.GankPhotos;
+import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
+
+import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -48,7 +51,13 @@ public interface ApiStores {
      * @param pageSize
      * @return
      */
-    @GET("10/{pageSize}")
+    @GET("20/{pageSize}")
     Observable<GankPhotos> getGankPhotos(@Path("pageSize") int pageSize);
+
+    @GET("list/0096/4GJ60096.json")
+    Observable<List<LifePhotoInfo>> getLifePhotos();
+
+    @GET("morelist/0096/4GJ60096/{setId}.json")
+    Observable<List<LifePhotoInfo>> getMoreLifePhotos(@Path("setId") String setId);
 
 }

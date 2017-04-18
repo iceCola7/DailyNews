@@ -20,6 +20,11 @@ public class Api {
     public static final String GANK_PHOTO_HOST = "http://gank.io/api/data/福利/";
 
     /**
+     * 生活图片
+     */
+    public static final String LIFE_PHOTO_HOST = "http://c.3g.163.com/photo/api/";
+
+    /**
      * 获取对应的host
      *
      * @param hostType host类型
@@ -33,6 +38,8 @@ public class Api {
                 return Api.ZHIHU_NEWS_HOST;
             case HostType.GANK_NEWS_PHOTO:
                 return Api.GANK_PHOTO_HOST;
+            case HostType.LIFE_NEWS_PHOTO:
+                return Api.LIFE_PHOTO_HOST;
         }
         return "";
     }

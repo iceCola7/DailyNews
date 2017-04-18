@@ -9,6 +9,7 @@ import com.cxz.news.R;
 import com.cxz.news.adapter.photos.ViewPagerAdapter;
 import com.cxz.news.base.BaseFragment;
 import com.cxz.news.module.main.MainActivity;
+import com.cxz.news.module.photo.gank.GankPhotoFragment;
 import com.cxz.news.module.photo.life.LifePhotoFragment;
 
 import java.util.ArrayList;
@@ -45,15 +46,13 @@ public class PhotosMainFragment extends BaseFragment<PhotosMainContract.IPresent
         initDrawerToggle(((MainActivity)mContext).getDrawerLayout(),mToolbar);
 
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new LifePhotoFragment());
+        fragments.add(new GankPhotoFragment());
         fragments.add(new LifePhotoFragment());
         fragments.add(new LifePhotoFragment());
         mViewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
-        mViewPagerAdapter.setItems(fragments,new String[]{getString(R.string.photo_life),getString(R.string.photo_life),getString(R.string.photo_life)});
+        mViewPagerAdapter.setItems(fragments,new String[]{getString(R.string.photo_gank),getString(R.string.photo_life),getString(R.string.photo_life)});
         mViewPager.setAdapter(mViewPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-
-
     }
 
     @Override
