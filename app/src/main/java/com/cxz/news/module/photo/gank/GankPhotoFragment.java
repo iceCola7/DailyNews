@@ -4,7 +4,7 @@ import com.cxz.news.R;
 import com.cxz.news.adapter.photos.GankPhotosAdapter;
 import com.cxz.news.base.BaseFragment;
 import com.cxz.news.bean.Photos.GankPhotoInfo;
-import com.cxz.news.module.photo.SpacesItemDecoration;
+import com.cxz.news.common.SpacesItemDecoration;
 import com.cxz.recyclerview.PullLoadMoreRecyclerView;
 
 import java.util.List;
