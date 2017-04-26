@@ -4,6 +4,7 @@ import android.util.SparseArray;
 
 import com.cxz.news.App;
 import com.cxz.news.base.BaseSchedulerTransformer;
+import com.cxz.news.bean.Photos.BeautyPhotos;
 import com.cxz.news.bean.Photos.GankPhotos;
 import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.bean.WeatherInfo;
@@ -116,9 +117,10 @@ public class RetrofitManager {
         }
     };
 
-    private RetrofitManager(){}
+    private RetrofitManager() {
+    }
 
-    private RetrofitManager(@HostType.HostTypeChecker int hostType){
+    private RetrofitManager(@HostType.HostTypeChecker int hostType) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.getHost(hostType))
                 .client(getOkHttpClient())
@@ -129,23 +131,24 @@ public class RetrofitManager {
         mApiStores = retrofit.create(ApiStores.class);
     }
 
-    public static RetrofitManager getInstance(int hostType){
+    public static RetrofitManager getInstance(int hostType) {
         RetrofitManager instance = mRetrofitManager.get(hostType);
-        if (instance == null){
+        if (instance == null) {
             instance = new RetrofitManager(hostType);
-            mRetrofitManager.put(hostType,instance);
+            mRetrofitManager.put(hostType, instance);
         }
         return instance;
     }
 
     /**
      * 配置OKHttpClient
+     *
      * @return
      */
-    private OkHttpClient getOkHttpClient(){
-        if (mOkHttpClient == null){
-            synchronized (RetrofitManager.class){
-                if (mOkHttpClient == null){
+    private OkHttpClient getOkHttpClient() {
+        if (mOkHttpClient == null) {
+            synchronized (RetrofitManager.class) {
+                if (mOkHttpClient == null) {
                     //指定缓存路径
                     //XLog.e("----------"+App.getApp().getCacheDir());
                     //File file = new File(App.getApp().getCacheDir().getAbsolutePath(), "HttpCache");
@@ -175,54 +178,68 @@ public class RetrofitManager {
 
     /**
      * 最新的新闻
+     *
      * @return
      */
-    public Observable<DailyStories> getLatestDailyStories(){
+    public Observable<DailyStories> getLatestDailyStories() {
         return mApiStores.getLatestDailyStories().compose(new BaseSchedulerTransformer<DailyStories>());
     }
 
     /**
      * 过去的新闻
+     *
      * @param date
      * @return
      */
-    public Observable<DailyStories> getBeforeDailyStories(String date){
+    public Observable<DailyStories> getBeforeDailyStories(String date) {
         return mApiStores.getBeforeDailyStories(date).compose(new BaseSchedulerTransformer<DailyStories>());
     }
 
     /**
      * 根据ID获取新闻详情
+     *
      * @param storyId
      * @return
      */
-    public Observable<Story> getStoryDetailById(String storyId){
+    public Observable<Story> getStoryDetailById(String storyId) {
         return mApiStores.getStoryDetailById(storyId).compose(new BaseSchedulerTransformer<Story>());
     }
 
     /**
      * 获取干货图片
+     *
      * @param pageSize
      * @return
      */
-    public Observable<GankPhotos> getGankPhotos(int pageSize){
+    public Observable<GankPhotos> getGankPhotos(int pageSize) {
         return mApiStores.getGankPhotos(pageSize).compose(new BaseSchedulerTransformer<GankPhotos>());
     }
 
     /**
      * 获取生活图片
+     *
      * @return
      */
-    public Observable<List<LifePhotoInfo>> getLifePhotos(){
+    public Observable<List<LifePhotoInfo>> getLifePhotos() {
         return mApiStores.getLifePhotos().compose(new BaseSchedulerTransformer<List<LifePhotoInfo>>());
     }
 
     /**
      * 获取更多生活图片
+     *
      * @param setId
      * @return
      */
-    public Observable<List<LifePhotoInfo>> getMoreLifePhotos(String setId){
+    public Observable<List<LifePhotoInfo>> getMoreLifePhotos(String setId) {
         return mApiStores.getMoreLifePhotos(setId).compose(new BaseSchedulerTransformer<List<LifePhotoInfo>>());
+    }
+
+    /**
+     * @param pageSize
+     * @return
+     */
+    public Observable<BeautyPhotos> getBeautyPhotos(int pageSize) {
+        return mApiStores.getBeautyPhotos(pageSize).compose(new BaseSchedulerTransformer<BeautyPhotos>());
     }
 
 }

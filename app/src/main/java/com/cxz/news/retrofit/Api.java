@@ -22,7 +22,7 @@ public class Api {
     /**
      * 生活图片
      */
-    public static final String LIFE_PHOTO_HOST = "http://c.3g.163.com/photo/api/";
+    public static final String LIFE_PHOTO_HOST = "http://c.3g.163.com/";
 
     /**
      * 获取对应的host

@@ -1,5 +1,6 @@
 package com.cxz.news.retrofit;
 
+import com.cxz.news.bean.Photos.BeautyPhotos;
 import com.cxz.news.bean.Photos.GankPhotos;
 import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.bean.WeatherInfo;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -54,10 +56,27 @@ public interface ApiStores {
     @GET("20/{pageSize}")
     Observable<GankPhotos> getGankPhotos(@Path("pageSize") int pageSize);
 
-    @GET("list/0096/4GJ60096.json")
+    /**
+     * 获取生活图片
+     * @return
+     */
+    @GET("photo/api/list/0096/4GJ60096.json")
     Observable<List<LifePhotoInfo>> getLifePhotos();
 
-    @GET("morelist/0096/4GJ60096/{setId}.json")
+    /**
+     * 获取更多生活图片
+     * @param setId
+     * @return
+     */
+    @GET("photo/api/morelist/0096/4GJ60096/{setId}.json")
     Observable<List<LifePhotoInfo>> getMoreLifePhotos(@Path("setId") String setId);
+
+    /**
+     *
+     * @param pageSize
+     * @return
+     */
+    @GET("recommend/getChanListNews?channel=T1456112189138&size=20")
+    Observable<BeautyPhotos> getBeautyPhotos(@Query("offset") int pageSize);
 
 }
