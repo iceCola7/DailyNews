@@ -24,8 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.weather.WeatherActivity"></activity>
-        <activity android:name=".module.news.detail.NewsDetailActivity"></activity>
+        <activity android:name=".module.weather.WeatherActivity" />
+        <activity android:name=".module.news.detail.NewsDetailActivity" />
+        <activity android:name=".module.video.detail.VideoDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DailyNews</string>
+    <string name="app_name">日报</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,7 +11,7 @@
 
     <string name="news_today_title">今日热闻</string>
     <string name="news_home">首页</string>
-    
+
     <string name="action_night_mode">夜间模式</string>
     <string name="action_day_mode">日间模式</string>
 
@@ -23,6 +23,11 @@
     <string name="photo_gank">福利</string>
     <string name="photo_life">生活</string>
     <string name="photo_beauty">美图</string>
+
+    <string name="video_hot">热点</string>
+    <string name="video_entertainment">娱乐</string>
+    <string name="video_funny">搞笑</string>
+    <string name="video_boutique">精品</string>
 
 
 </resources>

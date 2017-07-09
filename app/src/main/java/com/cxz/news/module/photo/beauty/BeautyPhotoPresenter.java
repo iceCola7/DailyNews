@@ -56,7 +56,6 @@ public class BeautyPhotoPresenter implements BeautyPhotoContract.IPresenter {
 
             @Override
             public void requestSuccess(BeautyPhotos data) {
-                XLog.d("ccccccccccc:"+data.getBeautyPhotoInfo().size());
                 if (pageSize == 0){
                     mView.updateItems(data.getBeautyPhotoInfo());
                 }else {

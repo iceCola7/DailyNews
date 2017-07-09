@@ -24,6 +24,20 @@ public class Api {
      */
     public static final String LIFE_PHOTO_HOST = "http://c.3g.163.com/";
 
+    // 热点视频
+    public static final String VIDEO_HOT_ID = "V9LG4B3A0";
+    // 娱乐视频
+    public static final String VIDEO_ENTERTAINMENT_ID = "V9LG4CHOR";
+    // 搞笑视频
+    public static final String VIDEO_FUN_ID = "V9LG4E6VR";
+    // 精品视频
+    public static final String VIDEO_CHOICE_ID = "00850FRB";
+
+    /**
+     * 视频
+     */
+    public static final String NETEAST_HOST = "https://c.m.163.com/";
+
     /**
      * 获取对应的host
      *
@@ -40,6 +54,8 @@ public class Api {
                 return Api.GANK_PHOTO_HOST;
             case HostType.LIFE_NEWS_PHOTO:
                 return Api.LIFE_PHOTO_HOST;
+            case HostType.NETEASE_NEWS_VIDEO:
+                return Api.NETEAST_HOST;
         }
         return "";
     }

@@ -6,8 +6,10 @@ import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
+import com.cxz.news.bean.videos.NeteastVideoSummary;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -72,11 +74,23 @@ public interface ApiStores {
     Observable<List<LifePhotoInfo>> getMoreLifePhotos(@Path("setId") String setId);
 
     /**
-     *
+     * 获取图片
      * @param pageSize
      * @return
      */
     @GET("recommend/getChanListNews?channel=T1456112189138&size=20")
     Observable<BeautyPhotos> getBeautyPhotos(@Query("offset") int pageSize);
+
+    /**
+     * 网易视频列表 例子：http://c.m.163.com/nc/video/list/V9LG4B3A0/n/0-10.html
+     *
+     * @param id        视频类别id
+     * @param startPage 开始的页码
+     * @return 被观察者
+     */
+    @GET("nc/video/list/{id}/n/{startPage}-10.html")
+    Observable<Map<String, List<NeteastVideoSummary>>> getVideoList(
+            @Path("id") String id,
+            @Path("startPage") int startPage);
 
 }

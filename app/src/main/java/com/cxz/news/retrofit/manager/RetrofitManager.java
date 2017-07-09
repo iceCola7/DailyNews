@@ -10,6 +10,7 @@ import com.cxz.news.bean.Photos.LifePhotoInfo;
 import com.cxz.news.bean.WeatherInfo;
 import com.cxz.news.bean.news.DailyStories;
 import com.cxz.news.bean.news.Story;
+import com.cxz.news.bean.videos.NeteastVideoSummary;
 import com.cxz.news.retrofit.Api;
 import com.cxz.news.retrofit.ApiStores;
 import com.cxz.news.retrofit.HostType;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -235,11 +237,22 @@ public class RetrofitManager {
     }
 
     /**
+     * 获取图片
      * @param pageSize
      * @return
      */
     public Observable<BeautyPhotos> getBeautyPhotos(int pageSize) {
         return mApiStores.getBeautyPhotos(pageSize).compose(new BaseSchedulerTransformer<BeautyPhotos>());
+    }
+
+    /**
+     * 获取网易视频列表
+     * @param id
+     * @param startPage
+     * @return
+     */
+    public Observable<Map<String, List<NeteastVideoSummary>>> getVideoList(String id, int startPage){
+        return mApiStores.getVideoList(id,startPage).compose(new BaseSchedulerTransformer<Map<String, List<NeteastVideoSummary>>>());
     }
 
 }

@@ -21,6 +21,7 @@ import com.cxz.news.R;
 import com.cxz.news.base.BaseActivity;
 import com.cxz.news.module.news.main.NewsMainFragment;
 import com.cxz.news.module.photo.main.PhotosMainFragment;
+import com.cxz.news.module.video.main.VideosMainFragment;
 import com.cxz.news.utils.SPUtils;
 
 import butterknife.BindView;
@@ -55,6 +56,7 @@ public class MainActivity extends BaseActivity<MainContract.IPresenter> implemen
                     replaceFragment(R.id.fl_container,new PhotosMainFragment(),mSparseTags.get(R.id.nav_photos));
                     break;
                 case R.id.nav_videos:
+                    replaceFragment(R.id.fl_container,new VideosMainFragment(),mSparseTags.get(R.id.nav_videos));
                    break;
                 case R.id.nav_setting:
 
