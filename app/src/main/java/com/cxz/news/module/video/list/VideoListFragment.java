@@ -63,7 +63,7 @@ public class VideoListFragment extends BaseFragment<VideoListContract.IPresenter
     protected void initViews() {
         mAdapter = new VideoAdapter();
         mRecyclerView.setRefreshing(true);
-        mRecyclerView.setGridLayout(2);
+        mRecyclerView.setStaggeredGridLayout(2);
         mRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreListener());
         mRecyclerView.setAdapter(mAdapter);
     }

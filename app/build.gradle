@@ -18,6 +18,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // 解决butterknife和lombok的冲突：Duplicate files copied in APK META-INF/services/javax.annotation.processing.Processor
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
+    }
+
+    productFlavors {
+        all32 { minSdkVersion 16 }
+        all64 { minSdkVersion 21 }
+        armv5 { minSdkVersion 16 }
+        armv7a { minSdkVersion 16 }
+        arm64 { minSdkVersion 21 }
+        x86 { minSdkVersion 16 }
+        x86_64 { minSdkVersion 21 }
+    }
+
 }
 
 dependencies {
@@ -56,5 +80,34 @@ dependencies {
     compile 'com.cxz.recyclerview:pullloadrecyclerview:1.0.0'
     //Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //ijkplayer
+//    // required, enough for most devices.
+//    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.8.0'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.0'
+//    // Other ABIs: optional
+//    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.0'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.0'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.0'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.0'
+//    // ExoPlayer as IMediaPlayer: optional, experimental
+//    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.0'
+    all32Compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.2'
+    all32Compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.2'
+    all32Compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.6.2'
+    all64Compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.2'
+    all64Compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.2'
+    all64Compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.6.2'
+    all64Compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.6.2'
+    all64Compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.6.2'
+    armv5Compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.2'
+    armv7aCompile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.2'
+    arm64Compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.6.2'
+    x86Compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.6.2'
+    x86_64Compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.6.2'
+    // required, enough for most devices.
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.2'
+    // ExoPlayer as IMediaPlayer: optional, experimental
+    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.2'
 
 }

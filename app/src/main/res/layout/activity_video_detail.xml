@@ -4,10 +4,9 @@
     android:id="@+id/activity_video_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cxz.news.module.video.detail.VideoDetailActivity">
+    android:background="@color/background_color_night"
+    android:fitsSystemWindows="true">
+
+
 
 </RelativeLayout>
