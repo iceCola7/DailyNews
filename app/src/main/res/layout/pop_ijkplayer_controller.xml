@@ -39,7 +39,7 @@
                 android:paddingTop="16dp"
                 android:src="@mipmap/ic_arrow_back_white"/>
 
-            <com.oushangfeng.ounews.utils.ijkplayer.widget.view.MarqueeTextView
+            <com.cxz.news.utils.ijkplayer.widget.view.MarqueeTextView
                 android:id="@+id/tv_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                 android:textSize="14dp"
                 tools:text="22:59"/>
 
-            <com.oushangfeng.ounews.utils.ijkplayer.widget.view.ProgressView
+            <com.cxz.news.utils.ijkplayer.widget.view.ProgressView
                 android:id="@+id/pv_play"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.oushangfeng.ounews.utils.ijkplayer.widget.view.ProgressView
+    <com.cxz.news.utils.ijkplayer.widget.view.ProgressView
         android:id="@+id/pv_brightness_volume"
         android:layout_width="wrap_content"
         android:layout_height="150dp"

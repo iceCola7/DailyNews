@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_video_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color_night"
     android:fitsSystemWindows="true">
 
+    <com.cxz.news.utils.ijkplayer.widget.media.IjkVideoView
+        android:id="@+id/video_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
+    <com.cxz.news.widget.ThreePointLoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:background="@color/background_color_night"
+        app:pointColor="?attr/pointColor"/>
 
 </RelativeLayout>

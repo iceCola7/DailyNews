@@ -19,6 +19,25 @@ android {
         }
     }
 
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+
+        if (variant.buildType.name.equals('release') || variant.buildType.name.equals('debug')) {
+            variant.outputs.each { output ->
+                def appName = 'DailyNews'
+                def oldFile = output.outputFile
+                def buildName = ''
+
+                variant.productFlavors.each { product ->
+                    buildName = product.name
+                }
+
+                def releaseApkName = appName + '-' + defaultConfig.versionName + "-" + variant.buildType.name + "-" + buildName + '.apk'
+                output.outputFile = new File(oldFile.parent, releaseApkName)
+            }
+        }
+    }
+
     // 解决butterknife和lombok的冲突：Duplicate files copied in APK META-INF/services/javax.annotation.processing.Processor
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'

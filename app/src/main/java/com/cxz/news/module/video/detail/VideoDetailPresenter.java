@@ -30,4 +30,9 @@ public class VideoDetailPresenter implements VideoDetailContract.IPresenter {
             mCompositeSubscription.unsubscribe();
         }
     }
+
+    @Override
+    public void playVideo(String url, String name) {
+        mView.playVideo(url,name);
+    }
 }

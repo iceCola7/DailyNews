@@ -10,11 +10,11 @@ import com.cxz.news.base.IBaseView;
 public class VideoDetailContract {
 
     interface IView extends IBaseView{
-
+        void playVideo(String url, String name);
     }
 
     interface IPresenter extends IBasePresenter<IView>{
-
+        void playVideo(String url, String name);
     }
 
 }
